@@ -31,14 +31,14 @@ Stage 1: Story Concept  →  Stage 2: Character Design  →  Stage 3: Emotion Ou
 Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene & Dialogue
 ```
 
-| Stage | Prompt Template | Output |
+| Stage | Prompt / Rule | Output |
 |------|-----------|------|
-| 1️⃣ Story Concept | [`01_story_concept.md`](.agents/skills/ai-novel-writing/prompts/01_story_concept.md) | World-building, core conflicts, reader hooks |
-| 2️⃣ Character Design | [`02_character_design.md`](.agents/skills/ai-novel-writing/prompts/02_character_design.md) | Character profile (including triggers) |
-| 3️⃣ Emotion Outline | [`03_emotion_outline.md`](.agents/skills/ai-novel-writing/prompts/03_emotion_outline.md) | Chapter emotional beat sheet |
-| 4️⃣ Scene & Dialogue | [`04_scene_dialogue.md`](.agents/skills/ai-novel-writing/prompts/04_scene_dialogue.md) | Subtextual dialogue + atmospheric descriptions |
-| 5️⃣ Chapter Gen | [`05_chapter_generation.md`](.agents/skills/ai-novel-writing/prompts/05_chapter_generation.md) | Chapter first draft |
-| 6️⃣ Review & Polish | [`06_review_polish.md`](.agents/skills/ai-novel-writing/prompts/06_review_polish.md) | Consistency check + quality polish + De-AI processing |
+| 0️⃣ Story Blueprint | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | Arc map, major conflict track, character rollout plan |
+| 1️⃣ Story Concept | [`01_story_concept.md`](prompts/01_story_concept.md) | World-building, core conflicts, reader hooks |
+| 2️⃣ Character Design | [`02_character_design.md`](prompts/02_character_design.md) | Character profile (including triggers) |
+| 3A️⃣ Outline Constraints | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | Volume-level constraint card before outlining |
+| 3️⃣ Emotion Outline | [`03_emotion_outline.md`](prompts/03_emotion_outline.md) | Plot-and-emotion beat sheet with continuity checks |
+| 4-6️⃣ Drafting, review, tracking | [`rules/`](rules) + [`09_arc_subplot_tracker.md`](prompts/09_arc_subplot_tracker.md) | Chapter drafting rules, review rules, tracking updates, arc checkups |
 
 ## 📁 Project Structure
 
@@ -46,12 +46,17 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 .agents/skills/ai-novel-writing/
 ├── SKILL.md                     # 📖 Master workflow guide (Start here)
 ├── prompts/
+│   ├── 00_story_blueprint.md    # Long-form blueprint and arc planning
 │   ├── 01_story_concept.md      # Story concept and world-building
 │   ├── 02_character_design.md   # Character profile generation
-│   ├── 03_emotion_outline.md    # Emotion beat outline
-│   ├── 04_scene_dialogue.md     # Scene descriptions and subtextual dialogues
-│   ├── 05_chapter_generation.md # Chapter draft generation
-│   └── 06_review_polish.md      # Three-round review and polish
+│   ├── 03a_outline_constraints.md # Pre-outline constraint card
+│   ├── 03_emotion_outline.md    # Emotion beat outline with plot checks
+│   └── 09_arc_subplot_tracker.md # Arc / subplot tracking
+├── rules/
+│   ├── writing_rules.md         # Scene and draft-generation rules
+│   ├── review_rules.md          # Consistency and de-AI review rules
+│   ├── tracking_rules.md        # State / fact tracking format
+│   └── next_chapter_direction_rules.md # Direction file for the next chapter
 └── examples/
     ├── character_example.md     # 🧑 Character profile example
     └── workflow_example.md      # 🔄 Complete workflow example
@@ -63,7 +68,10 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 Start with [`SKILL.md`](.agents/skills/ai-novel-writing/SKILL.md) to understand the overall logic of the six-stage workflow.
 
 ### 2. Use Prompts in Order
-Open the templates in the `prompts/` directory and use them sequentially from `01` to `06`. Fill in your specific content at the `【】` markers in each template.
+For long-form projects, use the templates in this order:
+`00` → `01` → `02` → `03a` → `03`.
+
+Then use the files under `rules/` to drive chapter drafting, review, and tracking. Fill in your specific content at the `【】` markers in each template.
 
 ### 3. Refer to Examples
 - Check [`character_example.md`](.agents/skills/ai-novel-writing/examples/character_example.md) to see what a character profile looks like.
@@ -72,6 +80,7 @@ Open the templates in the `prompts/` directory and use them sequentially from `0
 ## 💡 Key Tips
 
 - **Spend 10 minutes setting up the prompt framework, and 80% of the subsequent content will be directly usable.**
+- **Do not skip `03a_outline_constraints.md` for long-form work** — it prevents weak plots, continuity gaps, and setting drift before chapter drafting starts.
 - **Do not repeatedly regenerate** — This is the least efficient approach. Adjusting your input is much more effective than regenerating blindly.
 - **The first generation is always a semi-finished product** — Stage 6 (Review & Polish) cannot be skipped.
 - **Keep AI writing proportion under 30%** — Blend in your own expression style to ensure passage of platform AI detectors.

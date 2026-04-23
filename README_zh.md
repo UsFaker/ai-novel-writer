@@ -31,14 +31,14 @@
 阶段6 审查润色  ←  阶段5 章节生成  ←  阶段4 场景对话
 ```
 
-| 阶段 | 提示词模板 | 产出 |
+| 阶段 | 提示词 / 规则 | 产出 |
 |------|-----------|------|
-| 1️⃣ 故事概念 | [`01_story_concept.md`](.agents/skills/ai-novel-writing/prompts/01_story_concept.md) | 世界观、核心冲突、读者钩子 |
-| 2️⃣ 角色设计 | [`02_character_design.md`](.agents/skills/ai-novel-writing/prompts/02_character_design.md) | 角色性格档案（含触发机制） |
-| 3️⃣ 情绪大纲 | [`03_emotion_outline.md`](.agents/skills/ai-novel-writing/prompts/03_emotion_outline.md) | 章节情绪节拍表 |
-| 4️⃣ 场景对话 | [`04_scene_dialogue.md`](.agents/skills/ai-novel-writing/prompts/04_scene_dialogue.md) | 潜台词对话 + 氛围描写 |
-| 5️⃣ 章节生成 | [`05_chapter_generation.md`](.agents/skills/ai-novel-writing/prompts/05_chapter_generation.md) | 章节初稿 |
-| 6️⃣ 审查润色 | [`06_review_polish.md`](.agents/skills/ai-novel-writing/prompts/06_review_polish.md) | 一致性检查 + 质量润色 + 去AI化 |
+| 0️⃣ 全书蓝图 | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | 弧线规划、核心冲突分布、角色出场计划 |
+| 1️⃣ 故事概念 | [`01_story_concept.md`](prompts/01_story_concept.md) | 世界观、核心冲突、读者钩子 |
+| 2️⃣ 角色设计 | [`02_character_design.md`](prompts/02_character_design.md) | 角色性格档案（含触发机制） |
+| 3A️⃣ 大纲约束卡 | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | 生成大纲前的卷级约束卡 |
+| 3️⃣ 情绪大纲 | [`03_emotion_outline.md`](prompts/03_emotion_outline.md) | 带剧情承接检查的章节节拍表 |
+| 4-6️⃣ 起草、审查、追踪 | [`rules/`](rules) + [`09_arc_subplot_tracker.md`](prompts/09_arc_subplot_tracker.md) | 写作规则、审查规则、状态追踪、弧线检查 |
 
 ## 📁 项目结构
 
@@ -46,12 +46,17 @@
 .agents/skills/ai-novel-writing/
 ├── SKILL.md                     # 📖 工作流总指南（从这里开始）
 ├── prompts/
+│   ├── 00_story_blueprint.md    # 长篇蓝图与弧线规划
 │   ├── 01_story_concept.md      # 故事概念与世界观设定
 │   ├── 02_character_design.md   # 角色性格档案生成
-│   ├── 03_emotion_outline.md    # 情绪节拍大纲
-│   ├── 04_scene_dialogue.md     # 场景描写与潜台词对话
-│   ├── 05_chapter_generation.md # 章节正文生成
-│   └── 06_review_polish.md      # 审查与润色（三轮）
+│   ├── 03a_outline_constraints.md # 生成大纲前的约束卡
+│   ├── 03_emotion_outline.md    # 带剧情约束的情绪节拍大纲
+│   └── 09_arc_subplot_tracker.md # 弧线 / 支线追踪
+├── rules/
+│   ├── writing_rules.md         # 场景与正文生成规则
+│   ├── review_rules.md          # 一致性与去AI化审查规则
+│   ├── tracking_rules.md        # 状态 / 事实追踪格式
+│   └── next_chapter_direction_rules.md # 下一章方向文档规则
 └── examples/
     ├── character_example.md     # 🧑 角色档案示例（刑警林深）
     └── workflow_example.md      # 🔄 完整工作流示例
@@ -65,7 +70,9 @@
 
 ### 2. 按顺序使用提示词
 
-打开 `prompts/` 目录下的模板，按 `01` → `06` 的顺序依次使用。每个模板中的 `【】` 标记处填入你的具体内容。
+长篇项目建议按 `00` → `01` → `02` → `03a` → `03` 的顺序使用 `prompts/` 下的模板。
+
+然后再使用 `rules/` 目录下的规则文件驱动章节起草、审查和追踪。每个模板中的 `【】` 标记处填入你的具体内容。
 
 ### 3. 参考示例
 
@@ -75,6 +82,7 @@
 ## 💡 关键提示
 
 - **花 10 分钟搭好指令框架，后面 80% 的内容可以直接用**
+- **长篇不要跳过 `03a_outline_constraints.md`** — 先钉死约束，再排情绪大纲，能明显减少“剧情很烂”“脱设定”“章节接不上”的返工。
 - **不要反复重新生成** — 效率最低的做法，调整输入比重新生成有效得多
 - **第一遍生成永远是半成品** — 阶段 6 的审查润色不可省略
 - **AI 创作比例控制在 30% 以下** — 融入自己的表达方式，确保通过平台检测
