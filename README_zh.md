@@ -39,7 +39,6 @@
 | 3A️⃣ 大纲约束卡 | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | 生成大纲前的卷级约束卡 |
 | 3️⃣ 情绪大纲 | [`03_emotion_outline.md`](prompts/03_emotion_outline.md) | 带剧情承接检查的章节节拍表 |
 | 4-6️⃣ 起草、审查、追踪 | [`rules/`](rules) + [`09_arc_subplot_tracker.md`](prompts/09_arc_subplot_tracker.md) | 写作规则、审查规则、状态追踪、弧线检查 |
-| 🔄 回退 / 快照 | [`rollback_rules.md`](rules/rollback_rules.md) | 章节快照自动创建、一键回退到任意章节 |
 
 ## 📁 项目结构
 
@@ -57,8 +56,7 @@
 │   ├── writing_rules.md         # 场景与正文生成规则
 │   ├── review_rules.md          # 一致性与去AI化审查规则
 │   ├── tracking_rules.md        # 状态 / 事实追踪格式
-│   ├── next_chapter_direction_rules.md # 下一章方向文档规则
-│   └── rollback_rules.md        # 🔄 章节回退与快照规则
+│   └── next_chapter_direction_rules.md # 下一章方向文档规则
 └── examples/
     ├── character_example.md     # 🧑 角色档案示例（刑警林深）
     └── workflow_example.md      # 🔄 完整工作流示例
@@ -89,7 +87,6 @@
 - **第一遍生成永远是半成品** — 阶段 6 的审查润色不可省略
 - **AI 创作比例控制在 30% 以下** — 融入自己的表达方式，确保通过平台检测
 - **问题出在哪一层，就回到哪一层修改** — 不要在第5层修第2层的问题
-- **写几章后不满意？直接说"回退到第X章"** — 系统会自动恢复状态表和事实清单，删除后续章节文件，无需手动操作
 
 ## ⏱️ 效率参考
 

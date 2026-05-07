@@ -39,7 +39,6 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 | 3A️⃣ Outline Constraints | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | Volume-level constraint card before outlining |
 | 3️⃣ Emotion Outline | [`03_emotion_outline.md`](prompts/03_emotion_outline.md) | Plot-and-emotion beat sheet with continuity checks |
 | 4-6️⃣ Drafting, review, tracking | [`rules/`](rules) + [`09_arc_subplot_tracker.md`](prompts/09_arc_subplot_tracker.md) | Chapter drafting rules, review rules, tracking updates, arc checkups |
-| 🔄 Rollback / Snapshot | [`rollback_rules.md`](rules/rollback_rules.md) | Auto-snapshot after each chapter, one-click rollback to any chapter |
 
 ## 📁 Project Structure
 
@@ -57,8 +56,7 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 │   ├── writing_rules.md         # Scene and draft-generation rules
 │   ├── review_rules.md          # Consistency and de-AI review rules
 │   ├── tracking_rules.md        # State / fact tracking format
-│   ├── next_chapter_direction_rules.md # Direction file for the next chapter
-│   └── rollback_rules.md        # 🔄 Chapter rollback and snapshot rules
+│   └── next_chapter_direction_rules.md # Direction file for the next chapter
 └── examples/
     ├── character_example.md     # 🧑 Character profile example
     └── workflow_example.md      # 🔄 Complete workflow example
@@ -87,7 +85,6 @@ Then use the files under `rules/` to drive chapter drafting, review, and trackin
 - **The first generation is always a semi-finished product** — Stage 6 (Review & Polish) cannot be skipped.
 - **Keep AI writing proportion under 30%** — Blend in your own expression style to ensure passage of platform AI detectors.
 - **Fix the problem at its corresponding layer** — Do not try to fix a Stage 2 problem during Stage 5.
-- **Unhappy with recent chapters? Just say "rollback to chapter X"** — The system auto-restores state tables and fact sheets, and removes all subsequent chapter files. No manual work needed.
 
 ## ⏱️ Efficiency Reference
 
