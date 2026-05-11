@@ -49,6 +49,31 @@ $checks = @(
         File = "rules/next_chapter_direction_rules.md"
         Pattern = Convert-HexStringToText "65B9 5411 6587 6863 4E0D 662F 6B63 6587 7D20 6750"
         Message = "next_chapter_direction_rules.md must prevent direction prose from becoming chapter prose."
+    },
+    @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "5199 524D 4E0A 4E0B 6587 6E05 5355"
+        Message = "SKILL.md must include the pre-write context checklist."
+    },
+    @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "98CE 683C 4E0E 89C4 8303 63A2 6D4B"
+        Message = "SKILL.md must detect style and requirement constraints."
+    },
+    @{
+        File = "rules/writing_rules.md"
+        Pattern = Convert-HexStringToText "573A 666F 002D 7EED 573A 94FE"
+        Message = "writing_rules.md must require scene-sequel structure."
+    },
+    @{
+        File = "rules/tracking_rules.md"
+        Pattern = Convert-HexStringToText "957F 671F 8FFD 8E2A 7D22 5F15"
+        Message = "tracking_rules.md must define long-term tracking indexes."
+    },
+    @{
+        File = "rules/review_rules.md"
+        Pattern = Convert-HexStringToText "9057 5FD8 5143 7D20 5BA1 67E5"
+        Message = "review_rules.md must check forgotten story elements."
     }
 )
 
@@ -131,6 +156,23 @@ if ((Test-Path -LiteralPath $rootSkill) -and (Test-Path -LiteralPath $packagedSk
     $packagedHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedSkill).Hash
     if ($rootHash -ne $packagedHash) {
         $failures.Add("Packaged skills/ai-novel-writer/SKILL.md must stay in sync with root SKILL.md.")
+    }
+}
+
+foreach ($relativeRule in @(
+    "rules\writing_rules.md",
+    "rules\review_rules.md",
+    "rules\tracking_rules.md",
+    "rules\next_chapter_direction_rules.md"
+)) {
+    $rootRule = Join-Path $root $relativeRule
+    $packagedRule = Join-Path $root "skills\ai-novel-writer\$relativeRule"
+    if ((Test-Path -LiteralPath $rootRule) -and (Test-Path -LiteralPath $packagedRule)) {
+        $rootRuleHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $rootRule).Hash
+        $packagedRuleHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedRule).Hash
+        if ($rootRuleHash -ne $packagedRuleHash) {
+            $failures.Add("Packaged skills/ai-novel-writer/$relativeRule must stay in sync with root $relativeRule.")
+        }
     }
 }
 
