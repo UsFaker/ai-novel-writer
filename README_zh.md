@@ -43,7 +43,7 @@
 ## 📁 项目结构
 
 ```
-.agents/skills/ai-novel-writing/
+skills/ai-novel-writer/
 ├── SKILL.md                     # 📖 工作流总指南（从这里开始）
 ├── prompts/
 │   ├── 00_story_blueprint.md    # 长篇蓝图与弧线规划
@@ -66,7 +66,7 @@
 
 ### 1. 阅读工作流指南
 
-从 [`SKILL.md`](.agents/skills/ai-novel-writing/SKILL.md) 开始，了解六阶段工作流的整体逻辑。
+从 [`SKILL.md`](skills/ai-novel-writer/SKILL.md) 开始，了解六阶段工作流的整体逻辑。
 
 ### 2. 按顺序使用提示词
 
@@ -76,8 +76,8 @@
 
 ### 3. 参考示例
 
-- 看 [`character_example.md`](.agents/skills/ai-novel-writing/examples/character_example.md) 了解角色档案长什么样
-- 看 [`workflow_example.md`](.agents/skills/ai-novel-writing/examples/workflow_example.md) 了解从概念到章节的完整流程
+- 看 [`character_example.md`](skills/ai-novel-writer/examples/character_example.md) 了解角色档案长什么样
+- 看 [`workflow_example.md`](skills/ai-novel-writer/examples/workflow_example.md) 了解从概念到章节的完整流程
 
 ## 💡 关键提示
 

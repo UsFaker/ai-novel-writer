@@ -54,6 +54,18 @@ $checks = @(
 
 $failures = New-Object System.Collections.Generic.List[string]
 
+function Get-FileText {
+    param([string] $RelativePath)
+
+    $path = Join-Path $root $RelativePath
+    if (!(Test-Path -LiteralPath $path)) {
+        $failures.Add("Missing file: $RelativePath")
+        return $null
+    }
+
+    return Get-Content -Raw -Encoding UTF8 -LiteralPath $path
+}
+
 foreach ($check in $checks) {
     $path = Join-Path $root $check.File
     if (!(Test-Path -LiteralPath $path)) {
@@ -64,6 +76,108 @@ foreach ($check in $checks) {
     $content = Get-Content -Raw -Encoding UTF8 -LiteralPath $path
     if (!$content.Contains($check.Pattern)) {
         $failures.Add("$($check.Message) Missing pattern: '$($check.Pattern)'")
+    }
+}
+
+$skillContent = Get-FileText "SKILL.md"
+if ($null -ne $skillContent) {
+    if ($skillContent -notmatch "(?s)^---\s*\r?\n(.*?)\r?\n---") {
+        $failures.Add("SKILL.md must start with YAML frontmatter.")
+    } else {
+        $frontmatter = $Matches[1]
+        $nameMatch = [regex]::Match($frontmatter, "(?m)^name:\s*(.+?)\s*$")
+        if (!$nameMatch.Success) {
+            $failures.Add("SKILL.md frontmatter must include name.")
+        } elseif ($nameMatch.Groups[1].Value -notmatch "^[a-z0-9][a-z0-9-]*$") {
+            $failures.Add("SKILL.md frontmatter name must use lowercase letters, numbers, and hyphens only.")
+        }
+
+        $descriptionMatch = [regex]::Match($frontmatter, "(?m)^description:\s*(.+?)\s*$")
+        if (!$descriptionMatch.Success) {
+            $failures.Add("SKILL.md frontmatter must include description.")
+        } elseif ($descriptionMatch.Groups[1].Value -notmatch "^Use when ") {
+            $failures.Add("SKILL.md description must start with 'Use when'.")
+        }
+    }
+
+    if ($skillContent.Contains("rules/writing_rules.md")) {
+        $writingRules = Get-FileText "rules/writing_rules.md"
+        if ($null -ne $writingRules) {
+            $requiredWritingSections = @(
+                Convert-HexStringToText "5C0F 8BF4 611F 4E0E 53D9 4E8B 89C6 89D2"
+                Convert-HexStringToText "60C5 7EEA 6267 884C 89C4 5219"
+                Convert-HexStringToText "7981 6B62 4E8B 9879"
+                Convert-HexStringToText "5FC5 987B 4E8B 9879"
+            )
+
+            foreach ($section in $requiredWritingSections) {
+                if (!$writingRules.Contains("## $section")) {
+                    $failures.Add("rules/writing_rules.md must define section '$section' referenced by SKILL.md.")
+                }
+            }
+
+            $bodyStructure = Convert-HexStringToText "6B63 6587 7ED3 6784"
+            if ($skillContent.Contains($bodyStructure) -and !$writingRules.Contains("## $bodyStructure")) {
+                $failures.Add("SKILL.md references missing rules/writing_rules.md section '$bodyStructure'.")
+            }
+        }
+    }
+}
+
+$packagedSkill = Join-Path $root "skills\ai-novel-writer\SKILL.md"
+$rootSkill = Join-Path $root "SKILL.md"
+if ((Test-Path -LiteralPath $rootSkill) -and (Test-Path -LiteralPath $packagedSkill)) {
+    $rootHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $rootSkill).Hash
+    $packagedHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedSkill).Hash
+    if ($rootHash -ne $packagedHash) {
+        $failures.Add("Packaged skills/ai-novel-writer/SKILL.md must stay in sync with root SKILL.md.")
+    }
+}
+
+foreach ($readme in @("README.md", "README_zh.md")) {
+    $readmeContent = Get-FileText $readme
+    if ($null -ne $readmeContent) {
+        if ($readmeContent.Contains(".agents/skills/ai-novel-writing")) {
+            $failures.Add("$readme must not reference stale .agents/skills/ai-novel-writing paths.")
+        }
+
+        if (!$readmeContent.Contains("skills/ai-novel-writer/SKILL.md")) {
+            $failures.Add("$readme must link to the packaged skills/ai-novel-writer/SKILL.md.")
+        }
+    }
+}
+
+foreach ($promptFile in @("test-prompts.json", "skills\ai-novel-writer\test-prompts.json")) {
+    $promptPath = Join-Path $root $promptFile
+    if (!(Test-Path -LiteralPath $promptPath)) {
+        $failures.Add("$promptFile must exist for repeatable skill evaluation.")
+        continue
+    }
+
+    try {
+        $prompts = Get-Content -Raw -Encoding UTF8 -LiteralPath $promptPath | ConvertFrom-Json
+        if ($prompts.Count -lt 3) {
+            $failures.Add("$promptFile must contain at least 3 evaluation prompts.")
+        }
+
+        foreach ($prompt in $prompts) {
+            if ([string]::IsNullOrWhiteSpace($prompt.id) -or [string]::IsNullOrWhiteSpace($prompt.prompt) -or [string]::IsNullOrWhiteSpace($prompt.expected)) {
+                $failures.Add("$promptFile entries must include id, prompt, and expected.")
+                break
+            }
+        }
+    } catch {
+        $failures.Add("$promptFile must be valid JSON. $($_.Exception.Message)")
+    }
+}
+
+$rootPromptPath = Join-Path $root "test-prompts.json"
+$packagedPromptPath = Join-Path $root "skills\ai-novel-writer\test-prompts.json"
+if ((Test-Path -LiteralPath $rootPromptPath) -and (Test-Path -LiteralPath $packagedPromptPath)) {
+    $rootPromptHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $rootPromptPath).Hash
+    $packagedPromptHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedPromptPath).Hash
+    if ($rootPromptHash -ne $packagedPromptHash) {
+        $failures.Add("Packaged skills/ai-novel-writer/test-prompts.json must stay in sync with root test-prompts.json.")
     }
 }
 

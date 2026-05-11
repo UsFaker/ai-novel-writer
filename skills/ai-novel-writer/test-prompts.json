@@ -1,0 +1,22 @@
+[
+  {
+    "id": "continue-next-chapter",
+    "prompt": "写下一章。项目里已有 concept.md、characters/、outlines/、drafts/ 和 chapters/。",
+    "expected": "先定位目标章节并重新读取情绪节拍、角色状态、事实清单、角色档案、前情和方向文档；缺素材时停止说明；不直接输出小说正文。"
+  },
+  {
+    "id": "revise-local-dialogue",
+    "prompt": "把上一章里男女主争吵那段对话改得更有张力。",
+    "expected": "把请求路由为局部修改，仍重新加载相关素材和约束；只围绕指定片段调整对话、潜台词、行动后果，并在修改后执行审查。"
+  },
+  {
+    "id": "review-polish-draft",
+    "prompt": "审查并润色 drafts/第12章.md，重点去掉 AI 味和设定解释。",
+    "expected": "按审查润色规则检查一致性、视角、资料扩写、设定泄漏、句式腔和排版；硬伤修复后输出或保存完整正文。"
+  },
+  {
+    "id": "initialize-outline",
+    "prompt": "我有一个新网文点子，帮我设计角色并写情绪节拍大纲。",
+    "expected": "路由到初始化流程，引导先完成概念/蓝图/角色/情绪节拍等模板产物；不跳到章节正文生成。"
+  }
+]

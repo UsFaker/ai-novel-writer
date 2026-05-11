@@ -43,7 +43,7 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 ## 📁 Project Structure
 
 ```
-.agents/skills/ai-novel-writing/
+skills/ai-novel-writer/
 ├── SKILL.md                     # 📖 Master workflow guide (Start here)
 ├── prompts/
 │   ├── 00_story_blueprint.md    # Long-form blueprint and arc planning
@@ -65,7 +65,7 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 ## 🚀 Quick Start
 
 ### 1. Read the Workflow Guide
-Start with [`SKILL.md`](.agents/skills/ai-novel-writing/SKILL.md) to understand the overall logic of the six-stage workflow.
+Start with [`SKILL.md`](skills/ai-novel-writer/SKILL.md) to understand the overall logic of the six-stage workflow.
 
 ### 2. Use Prompts in Order
 For long-form projects, use the templates in this order:
@@ -74,8 +74,8 @@ For long-form projects, use the templates in this order:
 Then use the files under `rules/` to drive chapter drafting, review, and tracking. Fill in your specific content at the `【】` markers in each template.
 
 ### 3. Refer to Examples
-- Check [`character_example.md`](.agents/skills/ai-novel-writing/examples/character_example.md) to see what a character profile looks like.
-- Check [`workflow_example.md`](.agents/skills/ai-novel-writing/examples/workflow_example.md) to understand the complete process from concept to chapter.
+- Check [`character_example.md`](skills/ai-novel-writer/examples/character_example.md) to see what a character profile looks like.
+- Check [`workflow_example.md`](skills/ai-novel-writer/examples/workflow_example.md) to understand the complete process from concept to chapter.
 
 ## 💡 Key Tips
 
