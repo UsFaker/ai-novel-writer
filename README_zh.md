@@ -33,7 +33,8 @@
 
 | 阶段 | 提示词 / 规则 | 产出 |
 |------|-----------|------|
-| 0️⃣ 全书蓝图 | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | 弧线规划、核心冲突分布、角色出场计划 |
+| 0️⃣ 全书蓝图 | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | 容量预算、宏观阶段/篇、核心冲突分布、角色出场计划 |
+| 0A️⃣ 长篇结构索引 | [`00a_longform_structure_index.md`](prompts/00a_longform_structure_index.md) | 卷、剧情单元/小弧、章段批次、故事线事件规划 |
 | 1️⃣ 故事概念 | [`01_story_concept.md`](prompts/01_story_concept.md) | 世界观、核心冲突、读者钩子 |
 | 2️⃣ 角色设计 | [`02_character_design.md`](prompts/02_character_design.md) | 角色性格档案（含触发机制） |
 | 3A️⃣ 大纲约束卡 | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | 生成大纲前的卷级约束卡 |
@@ -47,6 +48,7 @@ skills/ai-novel-writer/
 ├── SKILL.md                     # 📖 工作流总指南（从这里开始）
 ├── prompts/
 │   ├── 00_story_blueprint.md    # 长篇蓝图与弧线规划
+│   ├── 00a_longform_structure_index.md # 长篇结构索引
 │   ├── 01_story_concept.md      # 故事概念与世界观设定
 │   ├── 02_character_design.md   # 角色性格档案生成
 │   ├── 03a_outline_constraints.md # 生成大纲前的约束卡
@@ -70,7 +72,7 @@ skills/ai-novel-writer/
 
 ### 2. 按顺序使用提示词
 
-长篇项目建议按 `00` → `01` → `02` → `03a` → `03` 的顺序使用 `prompts/` 下的模板。
+长篇项目建议按 `01` → `00` → `00a` → `02` → `03a` → `03` 的顺序使用 `prompts/` 下的模板。
 
 然后再使用 `rules/` 目录下的规则文件驱动章节起草、审查和追踪。每个模板中的 `【】` 标记处填入你的具体内容。
 
@@ -82,6 +84,7 @@ skills/ai-novel-writer/
 ## 💡 关键提示
 
 - **花 10 分钟搭好指令框架，后面 80% 的内容可以直接用**
+- **百万字级长篇不要跳过 `00a_longform_structure_index.md`** — 先把全书拆成卷、剧情单元/小弧和章段批次，避免用几个全书大弧冒充长期剧情规划。
 - **长篇不要跳过 `03a_outline_constraints.md`** — 先钉死约束，再排情绪大纲，能明显减少“剧情很烂”“脱设定”“章节接不上”的返工。
 - **不要反复重新生成** — 效率最低的做法，调整输入比重新生成有效得多
 - **第一遍生成永远是半成品** — 阶段 6 的审查润色不可省略

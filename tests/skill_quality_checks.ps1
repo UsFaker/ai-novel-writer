@@ -71,6 +71,31 @@ $checks = @(
         Message = "tracking_rules.md must define long-term tracking indexes."
     },
     @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "957F 7BC7 7ED3 6784 7D22 5F15"
+        Message = "SKILL.md must require a long-form structure index for million-word projects."
+    },
+    @{
+        File = "prompts\00_story_blueprint.md"
+        Pattern = Convert-HexStringToText "5BB9 91CF 9884 7B97"
+        Message = "00_story_blueprint.md must require capacity budgeting before arc/volume planning."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "6279 6B21 751F 6210"
+        Message = "03_emotion_outline.md must require batch generation for long-form chapter beats."
+    },
+    @{
+        File = "prompts\00a_longform_structure_index.md"
+        Pattern = Convert-HexStringToText "957F 7BC7 7ED3 6784 7D22 5F15"
+        Message = "long-form structure index template must exist."
+    },
+    @{
+        File = "rules/tracking_rules.md"
+        Pattern = Convert-HexStringToText "6545 4E8B 7EBF 4E8B 4EF6 8FFD 8E2A 8868"
+        Message = "tracking_rules.md must define event-based storyline tracking."
+    },
+    @{
         File = "rules/review_rules.md"
         Pattern = Convert-HexStringToText "9057 5FD8 5143 7D20 5BA1 67E5"
         Message = "review_rules.md must check forgotten story elements."

@@ -33,7 +33,8 @@ Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene 
 
 | Stage | Prompt / Rule | Output |
 |------|-----------|------|
-| 0️⃣ Story Blueprint | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | Arc map, major conflict track, character rollout plan |
+| 0️⃣ Story Blueprint | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | Capacity budget, macro phases, major conflict track, character rollout plan |
+| 0A️⃣ Long-form Structure Index | [`00a_longform_structure_index.md`](prompts/00a_longform_structure_index.md) | Volumes, small arcs, chapter batches, storyline event planning |
 | 1️⃣ Story Concept | [`01_story_concept.md`](prompts/01_story_concept.md) | World-building, core conflicts, reader hooks |
 | 2️⃣ Character Design | [`02_character_design.md`](prompts/02_character_design.md) | Character profile (including triggers) |
 | 3A️⃣ Outline Constraints | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | Volume-level constraint card before outlining |
@@ -47,6 +48,7 @@ skills/ai-novel-writer/
 ├── SKILL.md                     # 📖 Master workflow guide (Start here)
 ├── prompts/
 │   ├── 00_story_blueprint.md    # Long-form blueprint and arc planning
+│   ├── 00a_longform_structure_index.md # Long-form structure index
 │   ├── 01_story_concept.md      # Story concept and world-building
 │   ├── 02_character_design.md   # Character profile generation
 │   ├── 03a_outline_constraints.md # Pre-outline constraint card
@@ -69,7 +71,7 @@ Start with [`SKILL.md`](skills/ai-novel-writer/SKILL.md) to understand the overa
 
 ### 2. Use Prompts in Order
 For long-form projects, use the templates in this order:
-`00` → `01` → `02` → `03a` → `03`.
+`01` → `00` → `00a` → `02` → `03a` → `03`.
 
 Then use the files under `rules/` to drive chapter drafting, review, and tracking. Fill in your specific content at the `【】` markers in each template.
 
@@ -80,6 +82,7 @@ Then use the files under `rules/` to drive chapter drafting, review, and trackin
 ## 💡 Key Tips
 
 - **Spend 10 minutes setting up the prompt framework, and 80% of the subsequent content will be directly usable.**
+- **Do not skip `00a_longform_structure_index.md` for million-word work** — it splits the book into volumes, small arcs, and chapter batches instead of letting a few full-book arcs stand in for real long-form plotting.
 - **Do not skip `03a_outline_constraints.md` for long-form work** — it prevents weak plots, continuity gaps, and setting drift before chapter drafting starts.
 - **Do not repeatedly regenerate** — This is the least efficient approach. Adjusting your input is much more effective than regenerating blindly.
 - **The first generation is always a semi-finished product** — Stage 6 (Review & Polish) cannot be skipped.
