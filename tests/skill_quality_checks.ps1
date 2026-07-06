@@ -99,6 +99,126 @@ $checks = @(
         File = "rules/review_rules.md"
         Pattern = Convert-HexStringToText "9057 5FD8 5143 7D20 5BA1 67E5"
         Message = "review_rules.md must check forgotten story elements."
+    },
+    @{
+        File = "prompts\00a_longform_structure_index.md"
+        Pattern = Convert-HexStringToText "4E0D 5F97 628A 89C4 5212 7AE0 8282 5F53 6210 5DF2 5B8C 6210 8FDB 5EA6"
+        Message = "long-form structure index prompt must prevent planned chapters from becoming progress."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "7AE0 8282 8303 56F4 786C 6821 9A8C"
+        Message = "emotion outline prompt must require hard chapter-range consistency checks against the structure index."
+    },
+    @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "8282 62CD 002D 7ED3 6784 4E00 81F4 6027 68C0 67E5"
+        Message = "SKILL.md must require beat/structure consistency checks before chapter writing."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "6279 6B21 4EFB 52A1 767D 540D 5355"
+        Message = "emotion outline prompt must require a batch-task whitelist before generating beats."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "7981 6B62 628A 5F53 524D 5377 5173 952E 4E8B 4EF6 6539 5199 6210 5F53 524D 6279 6B21 4E8B 4EF6"
+        Message = "emotion outline prompt must forbid turning volume-level key events into current-batch events."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "4E0B 4E00 6279 5165 53E3 53EA 80FD 4F5C 4E3A 7AE0 672B 94A9 5B50"
+        Message = "emotion outline prompt must keep the next-batch entrance as a hook only."
+    },
+    @{
+        File = "prompts\03b_batch_context_pack.md"
+        Pattern = Convert-HexStringToText "6279 6B21 4E0A 4E0B 6587 5305"
+        Message = "03B batch context pack prompt must exist and name the batch context pack."
+    },
+    @{
+        File = "prompts\03b_batch_context_pack.md"
+        Pattern = Convert-HexStringToText "7981 6B62 590D 5236 5168 4E66 8D44 4EA7 539F 6587"
+        Message = "03B batch context pack must forbid copying full-book asset source text."
+    },
+    @{
+        File = "prompts\03b_batch_context_pack.md"
+        Pattern = Convert-HexStringToText "4F0F 7B14 72B6 6001 673A"
+        Message = "03B batch context pack must use a foreshadowing state machine."
+    },
+    @{
+        File = "prompts\03b_batch_context_pack.md"
+        Pattern = Convert-HexStringToText "6545 4E8B 7EBF 4E0B 4E00 6B65 52A8 4F5C"
+        Message = "03B batch context pack must reduce storylines to next allowed actions."
+    },
+    @{
+        File = "prompts\03b_batch_context_pack.md"
+        Pattern = Convert-HexStringToText "8282 62CD 63A5 529B 5361"
+        Message = "03B batch context pack must output a beat handoff card."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "53EA 63A5 53D7 6279 6B21 4E0A 4E0B 6587 5305"
+        Message = "03 emotion outline must accept only the batch context pack as planning input."
+    },
+    @{
+        File = "prompts\03_emotion_outline.md"
+        Pattern = Convert-HexStringToText "7981 6B62 7C98 8D34 5168 4E66 8D44 4EA7 539F 6587"
+        Message = "03 emotion outline must forbid pasting full-book asset source text."
+    },
+    @{
+        File = "prompts\00a_longform_structure_index.md"
+        Pattern = Convert-HexStringToText "5377 6BB5"
+        Message = "long-form structure index must support volume segments for very large volumes."
+    },
+    @{
+        File = "rules\tracking_rules.md"
+        Pattern = Convert-HexStringToText "4F0F 7B14 72B6 6001 673A"
+        Message = "tracking rules must define the foreshadowing state machine."
+    },
+    @{
+        File = "rules\asset_permission_rules.md"
+        Pattern = Convert-HexStringToText "6743 9650 6458 8981"
+        Message = "asset permission rules must require current-batch permission summaries."
+    },
+    @{
+        File = "rules\next_chapter_direction_rules.md"
+        Pattern = Convert-HexStringToText "53EA 5141 8BB8 4F7F 7528 6279 6B21 4E0A 4E0B 6587 5305"
+        Message = "next chapter direction rules must use only the batch context pack as the planning input."
+    },
+    @{
+        File = "rules\next_chapter_direction_rules.md"
+        Pattern = Convert-HexStringToText "7981 6B62 6253 5F00 5168 4E66 8D44 4EA7 539F 6587"
+        Message = "next chapter direction rules must forbid opening full-book asset source text."
+    },
+    @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "9636 6BB5 0033 0042"
+        Message = "SKILL.md must route outline generation through stage 3B."
+    },
+    @{
+        File = "SKILL.md"
+        Pattern = Convert-HexStringToText "4E0A 4E00 7AE0 672A 89E3 51B3 95EE 9898"
+        Message = "SKILL.md must require carrying unresolved pressure from the previous chapter into the next chapter."
+    },
+    @{
+        File = "rules\writing_rules.md"
+        Pattern = Convert-HexStringToText "8FDE 7EED 7AE0 8282 63A5 529B"
+        Message = "writing_rules.md must define continuous chapter handoff rules."
+    },
+    @{
+        File = "rules\writing_rules.md"
+        Pattern = Convert-HexStringToText "72EC 7ACB 77ED 7BC7 5316"
+        Message = "writing_rules.md must forbid chapters from reading like isolated short stories."
+    },
+    @{
+        File = "rules\review_rules.md"
+        Pattern = Convert-HexStringToText "72EC 7ACB 77ED 7BC7 5316 5BA1 67E5"
+        Message = "review_rules.md must review for isolated-short-story chapter structure."
+    },
+    @{
+        File = "rules\next_chapter_direction_rules.md"
+        Pattern = Convert-HexStringToText "627F 63A5 4E0A 4E00 7AE0 538B 529B"
+        Message = "next chapter direction rules must put previous-chapter pressure before standalone chapter structure."
     }
 )
 
@@ -197,6 +317,26 @@ foreach ($relativeRule in @(
         $packagedRuleHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedRule).Hash
         if ($rootRuleHash -ne $packagedRuleHash) {
             $failures.Add("Packaged skills/ai-novel-writer/$relativeRule must stay in sync with root $relativeRule.")
+        }
+    }
+}
+
+foreach ($relativePrompt in @(
+    "prompts\00_story_blueprint.md",
+    "prompts\00a_longform_structure_index.md",
+    "prompts\00b_story_constitution.md",
+    "prompts\00c_asset_permission_system.md",
+    "prompts\03a_outline_constraints.md",
+    "prompts\03b_batch_context_pack.md",
+    "prompts\03_emotion_outline.md"
+)) {
+    $rootPrompt = Join-Path $root $relativePrompt
+    $packagedPrompt = Join-Path $root "skills\ai-novel-writer\$relativePrompt"
+    if ((Test-Path -LiteralPath $rootPrompt) -and (Test-Path -LiteralPath $packagedPrompt)) {
+        $rootPromptHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $rootPrompt).Hash
+        $packagedPromptHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $packagedPrompt).Hash
+        if ($rootPromptHash -ne $packagedPromptHash) {
+            $failures.Add("Packaged skills/ai-novel-writer/$relativePrompt must stay in sync with root $relativePrompt.")
         }
     }
 }
