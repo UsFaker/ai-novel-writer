@@ -2,108 +2,74 @@
 
 [English Version](README.md) | [中文版](README_zh.md)
 
-> A complete AI novel writing workflow based on a **Four-Layer Instruction Framework**, helping you say goodbye to AI-generated "laundry list" plots and robotic tones, and efficiently produce web novel content with emotional tension.
+> Give the AI a novelist's way of working — not a stack of approval forms.
+> **Control lives in the structure; freedom lives in the sentences.** Planning files lock down facts, causality, and secret-reveal schedules; every sentence of prose regrows from inside the POV character.
 
-## 🎯 What is this?
+## 🎯 Problems it solves
 
-A structured set of **AI novel writing prompt templates + workflow guide** that solves three core problems:
-
-| Pain Point | Cause | Our Solution |
+| Pain point | Root cause | The fix in this workflow |
 |------|------|------------|
-| Reads like a summary | Asking AI directly to write plot outlines | **Emotional Beat Driven**: Define emotions first, then arrange scenes |
-| Stereotypical, inconsistent characters | Using abstract tags like "brave and kind" | **Trigger-Mechanism Character Design**: Define personalities through specific scenarios |
-| Too much "AI flavor" | Generating full chapters at once | **Six-Stage Layered Generation** + De-AI Review |
+| Emotional pacing drifts in long serials — climaxes feel flat, chapters read mechanical | Pacing driven by "intensity numbers": volume rises, stakes don't | **Tension waveform + raise-the-stakes rule + breather chapters + emotional debts**: emotion follows the character's situation; every reader grievance must be repaid on schedule |
+| Chapters connect poorly, each reads like a standalone short story | Outlines generated cell-by-cell, no causality between cells | **Causal beat cards + relay card + chain-read check**: every chapter must pick up exactly what the previous chapter "left for the next" |
+| The book has no spine — map after map, villain after villain | Event lists without a thesis or a price | **Story Core (ultimate question + false belief) + volume table ("what is lost forever") + trump-card ledger**: fate tightens volume by volume |
+| Every fix made the system messier | Each symptom got a new control layer; rules duplicated and fought each other | **Five artifacts, hard cap**: one fact lives in one place; the test script gives every file a line budget |
 
-## 📐 Four-Layer Instruction Framework
-
-The core methodology of this project:
-
-1. **🎭 Emotional Beats** — Define the emotions for each chapter (curiosity → unease → anger → relief) instead of just plot outlines.
-2. **💬 Subtextual Dialogue** — Design a three-layer dialogue structure: "What is said on the surface + What is truly thought + Body language".
-3. **📦 Layered Generation** — Step-by-step progression: Concept → Character → Outline → Scene → Draft → Polish.
-4. **🧠 Trigger-Mechanism Characters** — Define characters using breakdown points, principle-breaking conditions, and childhood events rather than abstract tags.
-
-## 🔄 Six-Stage Workflow
+## 📦 The five artifacts (a novel project's entire paperwork)
 
 ```
-Stage 1: Story Concept  →  Stage 2: Character Design  →  Stage 3: Emotion Outline
-                                                                 ↓
-Stage 6: Review & Polish  ←  Stage 5: Chapter Generation  ←  Stage 4: Scene & Dialogue
+故事核.md        Why this book is worth finishing: ultimate question, false belief, trump cards
+characters/      One file per character: trigger mechanisms, dialogue voice, knowledge boundary
+outlines/
+├── 全书结构.md  Volume table (fate progression) + arc cards (8-25 chapter causal loops)
+├── 节拍_弧X.md  Per-chapter beat cards: inherit → choice → surprise → consequence → hand-off
+└── 账本.md      Hard facts (append-only) / character now / threads & emotional debts / relay card
 ```
 
-| Stage | Prompt / Rule | Output |
-|------|-----------|------|
-| 0️⃣ Story Blueprint | [`00_story_blueprint.md`](prompts/00_story_blueprint.md) | Capacity budget, macro phases, major conflict track, character rollout plan |
-| 0A️⃣ Long-form Structure Index | [`00a_longform_structure_index.md`](prompts/00a_longform_structure_index.md) | Volumes, small arcs, chapter batches, storyline event planning |
-| 1️⃣ Story Concept | [`01_story_concept.md`](prompts/01_story_concept.md) | World-building, core conflicts, reader hooks |
-| 2️⃣ Character Design | [`02_character_design.md`](prompts/02_character_design.md) | Character profile (including triggers) |
-| 3A️⃣ Outline Constraints | [`03a_outline_constraints.md`](prompts/03a_outline_constraints.md) | Volume-level constraint card before outlining |
-| 3️⃣ Emotion Outline | [`03_emotion_outline.md`](prompts/03_emotion_outline.md) | Plot-and-emotion beat sheet with continuity checks |
-| 4-6️⃣ Drafting, review, tracking | [`rules/`](rules) + [`09_arc_subplot_tracker.md`](prompts/09_arc_subplot_tracker.md) | Chapter drafting rules, review rules, tracking updates, arc checkups |
+The chapter loop: **load → three questions before drafting → writer's draft → revision (facts → chain → humanity) → bookkeeping → brief**.
+At arc end: chain-read check + next arc's beats. At volume end: the three volume questions + revise future volume rows.
 
-## 📁 Project Structure
+## 🧭 The four working principles
+
+1. **Plot is causality, not a list** — adjacent chapters must connect with "therefore/but"; anywhere only "and then" fits is a broken link
+2. **Emotion is the reader's heartbeat over the stakes** — to tighten: raise stakes, cut time, remove exits; to release: cash in a small win. Never fake emotion with adjectives
+3. **Secrets are debts owed to the reader** — a trump card has three states: buried → cracked open → played, and every reveal must cost something
+4. **Control in structure, freedom in sentences** — planning language never enters prose
+
+## 📂 Repository layout
 
 ```
 skills/ai-novel-writer/
-├── SKILL.md                     # 📖 Master workflow guide (Start here)
+├── SKILL.md                     # 📖 The engine: routing, chapter loop, init, checkpoints (start here)
 ├── prompts/
-│   ├── 00_story_blueprint.md    # Long-form blueprint and arc planning
-│   ├── 00a_longform_structure_index.md # Long-form structure index
-│   ├── 01_story_concept.md      # Story concept and world-building
-│   ├── 02_character_design.md   # Character profile generation
-│   ├── 03a_outline_constraints.md # Pre-outline constraint card
-│   ├── 03_emotion_outline.md    # Emotion beat outline with plot checks
-│   └── 09_arc_subplot_tracker.md # Arc / subplot tracking
+│   ├── 01_story_core.md         # Story core: ultimate question, false belief, trump cards
+│   ├── 02_character_design.md   # Trigger-mechanism character profiles
+│   ├── 03_book_structure.md     # Capacity budget, volume table, arc cards, reveal schedule
+│   └── 04_arc_beats.md          # Causal beat cards, tension waveform, chain-read check
 ├── rules/
-│   ├── writing_rules.md         # Scene and draft-generation rules
-│   ├── review_rules.md          # Consistency and de-AI review rules
-│   ├── tracking_rules.md        # State / fact tracking format
-│   └── next_chapter_direction_rules.md # Direction file for the next chapter
-└── examples/
-    ├── character_example.md     # 🧑 Character profile example
-    └── workflow_example.md      # 🔄 Complete workflow example
+│   ├── craft_rules.md           # The writer's handbook: POV, dialogue, chapter relay, de-AI diagnosis
+│   ├── ledger_rules.md          # The ledger: single tracking file + relay card
+│   └── research_rules.md        # Fact-checking against real-world/professional sources
+├── examples/                    # Full workflow example + character profile example
+└── test-prompts.json            # 13 evaluation scenarios
+tests/
+├── skill_quality_checks.ps1     # Quality checks (ASCII-only logic)
+└── checks.json                  # Check config: key mechanisms + line budgets (anti-bloat)
 ```
 
-## 🚀 Quick Start
+## 🚀 Quick start
 
-### 1. Read the Workflow Guide
-Start with [`SKILL.md`](skills/ai-novel-writer/SKILL.md) to understand the overall logic of the six-stage workflow.
+1. Start with [`skills/ai-novel-writer/SKILL.md`](skills/ai-novel-writer/SKILL.md) for the routing and the chapter loop.
+2. New project: run `prompts/01 → 02 → 03 → 04` in order, create the ledger, then ask the AI to "write the next chapter".
+3. A million-word serial does not need more file types — only more volumes and arc cards (see the capacity budget in `03_book_structure.md`).
+4. Legacy projects (story constitution / asset library / batch context packs): the "migration" section in SKILL.md merges them into the five artifacts.
 
-### 2. Use Prompts in Order
-For long-form projects, use the templates in this order:
-`01` → `00` → `00a` → `02` → `03a` → `03`.
+## 💡 Key tips
 
-Then use the files under `rules/` to drive chapter drafting, review, and tracking. Fill in your specific content at the `【】` markers in each template.
-
-### 3. Refer to Examples
-- Check [`character_example.md`](skills/ai-novel-writer/examples/character_example.md) to see what a character profile looks like.
-- Check [`workflow_example.md`](skills/ai-novel-writer/examples/workflow_example.md) to understand the complete process from concept to chapter.
-
-## 💡 Key Tips
-
-- **Spend 10 minutes setting up the prompt framework, and 80% of the subsequent content will be directly usable.**
-- **Do not skip `00a_longform_structure_index.md` for million-word work** — it splits the book into volumes, small arcs, and chapter batches instead of letting a few full-book arcs stand in for real long-form plotting.
-- **Do not skip `03a_outline_constraints.md` for long-form work** — it prevents weak plots, continuity gaps, and setting drift before chapter drafting starts.
-- **Do not repeatedly regenerate** — This is the least efficient approach. Adjusting your input is much more effective than regenerating blindly.
-- **The first generation is always a semi-finished product** — Stage 6 (Review & Polish) cannot be skipped.
-- **Keep AI writing proportion under 30%** — Blend in your own expression style to ensure passage of platform AI detectors.
-- **Fix the problem at its corresponding layer** — Do not try to fix a Stage 2 problem during Stage 5.
-
-## ⏱️ Efficiency Reference
-
-| Process | Time per Chapter |
-|------|---------|
-| Material Prep (Stages 1-3, one-time) | ~ 40-60 mins |
-| Scene Dialogue + Chapter Gen (Stages 4-5) | ~ 15-25 mins/chapter |
-| Review & Polish (Stage 6) | ~ 15-20 mins/chapter |
-| **Total Per Chapter** | **~ 30-45 mins** |
-
-> 📊 Based on 2000-3000 words per chapter, you can produce about 6000 words in 2 hours.
+- **Generate beats one arc at a time** (8-25 chapters); detail near, sketch far.
+- **The ledger is the only file updated every chapter**; the relay card replaces all "next chapter direction" documents.
+- **The AI stops only for two reasons**: missing artifacts, or a conflict with established facts. Everything else is judgment plus a note in the brief — no constant stalling.
+- **Run the tests when editing this skill**: `powershell -File tests/skill_quality_checks.ps1`. Over budget? Cut before you add.
 
 ## 📄 License
 
-MIT License - Free to use, modify, and distribute.
-
----
-
-*If this project helps you, please consider giving it a ⭐ Star!*
+MIT License

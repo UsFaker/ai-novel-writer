@@ -1,0 +1,162 @@
+{
+  "comment": "技能质量检查配置。patternChecks 保证关键机制不被误删；budgets 是简洁性预算——超出预算的修改必须先删后加；forbiddenPaths 防止旧架构文件和根目录副本回潮。",
+  "skillRoot": "skills/ai-novel-writer",
+  "requiredFiles": [
+    "skills/ai-novel-writer/SKILL.md",
+    "skills/ai-novel-writer/prompts/01_story_core.md",
+    "skills/ai-novel-writer/prompts/02_character_design.md",
+    "skills/ai-novel-writer/prompts/03_book_structure.md",
+    "skills/ai-novel-writer/prompts/04_arc_beats.md",
+    "skills/ai-novel-writer/rules/craft_rules.md",
+    "skills/ai-novel-writer/rules/ledger_rules.md",
+    "skills/ai-novel-writer/rules/research_rules.md",
+    "skills/ai-novel-writer/examples/character_example.md",
+    "skills/ai-novel-writer/examples/workflow_example.md",
+    "skills/ai-novel-writer/test-prompts.json",
+    "README.md",
+    "README_zh.md"
+  ],
+  "forbiddenPaths": [
+    "SKILL.md",
+    "prompts",
+    "rules",
+    "examples",
+    "test-prompts.json",
+    "skills/ai-novel-writer/prompts/00_story_blueprint.md",
+    "skills/ai-novel-writer/prompts/00a_longform_structure_index.md",
+    "skills/ai-novel-writer/prompts/00b_story_constitution.md",
+    "skills/ai-novel-writer/prompts/00c_asset_permission_system.md",
+    "skills/ai-novel-writer/prompts/01_story_concept.md",
+    "skills/ai-novel-writer/prompts/03_emotion_outline.md",
+    "skills/ai-novel-writer/prompts/03a_outline_constraints.md",
+    "skills/ai-novel-writer/prompts/03b_batch_context_pack.md",
+    "skills/ai-novel-writer/prompts/09_arc_subplot_tracker.md",
+    "skills/ai-novel-writer/rules/writing_rules.md",
+    "skills/ai-novel-writer/rules/review_rules.md",
+    "skills/ai-novel-writer/rules/tracking_rules.md",
+    "skills/ai-novel-writer/rules/next_chapter_direction_rules.md",
+    "skills/ai-novel-writer/rules/asset_permission_rules.md"
+  ],
+  "patternChecks": [
+    {
+      "file": "SKILL.md",
+      "mustContain": [
+        "创作观",
+        "剧情是因果，不是清单",
+        "情绪是读者对赌注的心跳",
+        "五件套",
+        "铁律",
+        "开笔三问",
+        "接力卡",
+        "底牌表",
+        "账本",
+        "卷末三问",
+        "旧项目迁移"
+      ]
+    },
+    {
+      "file": "prompts/01_story_core.md",
+      "mustContain": [
+        "一句话故事",
+        "终极问题",
+        "错误信念",
+        "对立面哲学",
+        "底牌表",
+        "开局只开一条缝",
+        "不可逆清单"
+      ]
+    },
+    {
+      "file": "prompts/02_character_design.md",
+      "mustContain": [
+        "计划登场就建档",
+        "情绪触发机制",
+        "性格矛盾点",
+        "信息边界"
+      ]
+    },
+    {
+      "file": "prompts/03_book_structure.md",
+      "mustContain": [
+        "容量预算",
+        "卷表",
+        "弧卡",
+        "永远失去什么",
+        "转折是弧的脊椎",
+        "底牌日程",
+        "链读检查",
+        "远粗近细"
+      ]
+    },
+    {
+      "file": "prompts/04_arc_beats.md",
+      "mustContain": [
+        "张力波形",
+        "呼吸章",
+        "留给下一章",
+        "升级 = 加码",
+        "不越弧",
+        "底牌不越层",
+        "链读检查",
+        "偏差报告"
+      ]
+    },
+    {
+      "file": "rules/craft_rules.md",
+      "mustContain": [
+        "先写活人",
+        "视角",
+        "场景发动机",
+        "设定转行为",
+        "章节接力",
+        "独立短篇化",
+        "修稿清单",
+        "AI 味诊断",
+        "输出格式"
+      ]
+    },
+    {
+      "file": "rules/ledger_rules.md",
+      "mustContain": [
+        "硬事实",
+        "只增不改",
+        "死亡即永久",
+        "角色现状",
+        "线头与情绪债",
+        "过期提醒",
+        "接力卡"
+      ]
+    },
+    {
+      "file": "rules/research_rules.md",
+      "mustContain": [
+        "来源优先级",
+        "禁止误写"
+      ]
+    }
+  ],
+  "budgets": [
+    { "file": "SKILL.md", "maxLines": 280 },
+    { "file": "prompts/01_story_core.md", "maxLines": 220 },
+    { "file": "prompts/02_character_design.md", "maxLines": 220 },
+    { "file": "prompts/03_book_structure.md", "maxLines": 220 },
+    { "file": "prompts/04_arc_beats.md", "maxLines": 220 },
+    { "file": "rules/craft_rules.md", "maxLines": 320 },
+    { "file": "rules/ledger_rules.md", "maxLines": 200 },
+    { "file": "rules/research_rules.md", "maxLines": 120 },
+    { "file": "examples/workflow_example.md", "maxLines": 300 }
+  ],
+  "fileCountBudgets": [
+    { "dir": "prompts", "maxMarkdownFiles": 5 },
+    { "dir": "rules", "maxMarkdownFiles": 4 }
+  ],
+  "readmeChecks": {
+    "files": ["README.md", "README_zh.md"],
+    "mustContain": ["skills/ai-novel-writer/SKILL.md"],
+    "mustNotContain": ["00_story_blueprint", "03b_batch_context_pack", "00a_longform_structure_index"]
+  },
+  "testPrompts": {
+    "file": "skills/ai-novel-writer/test-prompts.json",
+    "minEntries": 8
+  }
+}
